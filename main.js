@@ -81,8 +81,10 @@ const createTest = async (cronjob) => {
   console.log(`Create test ${cronjob.id}`);
   // The trailing slack is important !
   const response = await healthchecks.post('checks/', getTestBody(cronjob));
-  console.log(response.status);
-  console.log(response.data);
+  
+  // Ping the URL to start the healthcheck
+  await axios.get(response.data.ping_url);
+  
 };
 
 const updateTest = (cronjob, uuid) => {
@@ -103,6 +105,7 @@ const deleteTest = (test) => {
 
   // For kubernetes cj
   for (const cronjob of cronjobs) {
+    console.log(`Test ${cronjob.id}`)
     // try to find the corresponding test
     const test = tests.find((test) => test.id === cronjob.id);
 

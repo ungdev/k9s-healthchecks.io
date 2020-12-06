@@ -1,0 +1,11 @@
+apiVersion: authorization.openshift.io/v1
+groupNames: null
+kind: ClusterRoleBinding
+metadata:
+  name: healthchecks-sync
+roleRef:
+  name: healthchecks-sync
+subjects:
+- kind: ServiceAccount
+  name: healthchecks-sync
+  namespace: sia

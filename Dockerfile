@@ -4,9 +4,9 @@ ENV NODE_ENV=production
 
 WORKDIR /opt
 
-COPY package.json yarn.lock
+COPY package.json yarn.lock ./
 
-RUN yarn
+RUN yarn --verbose
 
 COPY . .
 

@@ -124,4 +124,7 @@ const deleteTest = (test) => {
   for (const testToDelete of testsToDelete) {
     await deleteTest(testToDelete);
   }
-})().catch(console.error);
+})().catch((error) => {
+  console.log(error);
+  process.exit(1);
+});

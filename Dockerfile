@@ -4,6 +4,8 @@ ENV NODE_ENV=production
 
 WORKDIR /opt
 
+RUN apk update && apk add --no-cache curl
+
 COPY package.json yarn.lock ./
 
 RUN yarn --verbose

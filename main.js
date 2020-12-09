@@ -75,6 +75,7 @@ const getTestBody = (cronjob) => ({
   //tags: [cronjob.namespace],
   grace: process.env.GRACE_TIME || 300, // 5 minutes grace
   channels: '*', // Publish on all integrations
+  tz: 'Europe/Paris'
 });
 
 const createTest = async (cronjob) => {
